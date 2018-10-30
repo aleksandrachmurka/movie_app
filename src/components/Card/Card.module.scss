@@ -1,0 +1,43 @@
+.container {
+  margin: 10%;
+  padding: 5%;
+  max-width: 80vw;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content:stretch;
+  background-color: #eee;
+  border: 2px solid black;
+}
+
+.backgroundImage {
+  width: 30%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+.text {
+  width: 70%;
+  padding-left: 2%;
+
+  h3 {
+    font-size: 3em;
+    word-spacing: 0.3em;
+    margin-top: 0;
+    margin-bottom: 0.35rem;
+  }
+
+  h5 {
+    font-size: 1.5em;
+    text-decoration: underline;
+    margin-top: 0;
+    margin-bottom: 0.35rem;
+  }
+
+  p {
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 1em;
+    min-height: 90px;
+  }
+}

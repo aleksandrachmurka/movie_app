@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from './App.module.scss'
+import styles from './App.module.scss';
+import Card from './components/Card';
 
 const data = [
     {
@@ -10,6 +11,10 @@ const data = [
         img: 'https://i.imgur.com/0oo7XJc.jpg',
         rating: 4,
         soldedOut: false,
+        alert: {
+            message: 'Wyprzedane',
+            type: 'error',
+        }
     },
     {
         title: 'Mission: Impossible - Fallout',
@@ -19,6 +24,10 @@ const data = [
         img: 'https://i.imgur.com/rOXaXH6.jpg',
         rating: 5,
         soldedOut: false,
+        alert: {
+            message: 'Ostatnie miejsca',
+            type: 'warning',
+        }
     },
     {
         title: 'American Animals',
@@ -29,13 +38,38 @@ const data = [
         img: 'https://i.imgur.com/3koreob.jpg',
         rating: 3,
         soldedOut: true,
+        alert: {
+            message: 'Nowość!',
+            type: 'success',
+        }
     },
 ];
 
+
+
 const App = () => (
-    <div className={styles.container}>
-        test
-    </div>
+  <div className={styles.container}>
+    {
+      data.map(movie => {
+        return (
+          <Card
+            key = {movie.id}
+            title={movie.title}
+            releaseDate={movie.releaseDate}
+            description={movie.desc}
+            duration={movie.duration}
+            image={movie.img}
+            rating={movie.rating}
+            soldedOut={movie.soldedOut}
+            alert={movie.alert}
+          />
+        )
+      })
+
+    }
+
+
+  </div>
 );
 
 

@@ -1,14 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Exo+2');
+
+* {
+	box-sizing:border-box;
+}
+
 :global {
   body {
-    background-color: #eeeeee;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  	margin: 0;
+  	font-family: 'Exo 2', sans-serif;
   }
 }
 
 .container {
-  display: flex;
-  max-width: 1250px;
-  flex-wrap: wrap;
-  margin: 10% auto;
+  max-width: 100%;
+  background-color: #969191;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
 }
 
