@@ -17,12 +17,13 @@ class Rating extends Component {
 		super(props);
 		this.state = {
 			value: props.rating,
+			temporaryValue: null,
 		}
 	}
 
 	handleClick = (rate) => {
 		//when the same star was clicked second time
-		if(rate == this.state.value) {
+		if(rate === this.state.value) {
 			this.setState({value: 0});
 			return;
 		}
@@ -30,11 +31,11 @@ class Rating extends Component {
 	}
 
 	handleMouseEnter = (rate) => {
-		this.setState({value: rate});
+		this.setState({temporaryValue: rate});
 	}
 
-	handleMouseLeave = (previousRate) => {
-		this.setState({value: previousRate});
+	handleMouseLeave = () => {
+		this.setState({temporaryValue: null});
 	}
 
 
@@ -44,14 +45,20 @@ class Rating extends Component {
 				{
 					Object.keys(ratingDesc).map(starKey=> (
 							<FontAwesomeIcon icon={faStar} id={starKey}
-							className={ starKey <=this.state.value ? styles.starFill : styles.star}
+							className={
+								this.state.temporaryValue !== null ?
+								(starKey <= this.state.temporaryValue ? styles.starFill : styles.star)
+								:
+								(starKey <= this.state.value ? styles.starFill : styles.star)
+
+							}
 							onClick={()=>this.handleClick(starKey)}
 							onMouseEnter={()=> this.handleMouseEnter(starKey)}
-							onMouseLeave={()=>this.handleMouseLeave(previousRate)}
+							onMouseLeave={()=>this.handleMouseLeave()}
 							/>
 					))
 				}
-				<span> {this.state.value!==0 ? ratingDesc[this.state.value] : 'Brak oceny'}</span>
+				<span> {this.state.value===0 ?  'Brak oceny' : this.state.temporaryValue ? ratingDesc[this.state.temporaryValue]: ratingDesc[this.state.value]}</span>
 			</div>
 		)
 	};
