@@ -14,33 +14,44 @@ const ratingDesc = {
 
 class Rating extends Component {
 	constructor({rating}) {
-		super({rating});
+		super(rating);
 		this.state = {
 			value: rating,
-		};
+		}
 	}
 
-	handleChange = (event) => {
-		document.querySelectorAll('input[checkbox]').checked = false;
-		const rate = event.target.value;
+	handleClick = (rate) => {
+		//when the same star was clicked second time
+		if(rate == this.state.value) {
+			this.setState({value: 0});
+			return;
+		}
 		this.setState({value: rate});
 	}
+
+	handleMouseEnter = (rate) => {
+		this.setState({value: rate});
+	}
+
+	handleMouseLeave = (previousRate) => {
+		this.setState({value: previousRate});
+	}
+
 
 	render(){
 		return(
 			<div>
 				{
 					Object.keys(ratingDesc).map(starKey=> (
-					<div className={styles.star}>
-						<input type="checkbox" id={starKey} value={starKey} onChange={this.handleChange} onMouseEnter={this.handleChange}
-							checked={starKey <= this.state.value ? true: false}/>
-						<label htmlFor={starKey}>
-							<FontAwesomeIcon icon={faStar} />
-						</label>
-					</div>
+							<FontAwesomeIcon icon={faStar} id={starKey}
+							className={ starKey <=this.state.value ? styles.starFill : styles.star}
+							onClick={()=>this.handleClick(starKey)}
+							onMouseEnter={()=> this.handleMouseEnter(starKey)}
+							onMouseLeave={()=>this.handleMouseLeave(previousRate)}
+							/>
 					))
 				}
-				<span> {ratingDesc[this.state.value]}</span>
+				<span> {this.state.value!==0 ? ratingDesc[this.state.value] : 'Brak oceny'}</span>
 			</div>
 		)
 	};

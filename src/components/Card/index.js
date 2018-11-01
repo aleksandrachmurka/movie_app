@@ -5,7 +5,7 @@ import RunningTime from '../RunningTime';
 import Button from '../Button';
 import Rating from '../Rating';
 
-const Card = ({title, image, releaseDate, description, ...rest}) => {
+const Card = ({title, image, releaseDate, duration, description, rating, soldedOut}) => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.backgroundImage} style={{backgroundImage: `url(${image})`}} />
@@ -14,10 +14,10 @@ const Card = ({title, image, releaseDate, description, ...rest}) => {
 					{title}
 				</h3>
 				<h5>Premiera: {releaseDate}</h5>
-				<RunningTime  {...rest}/>
+				<RunningTime  duration={duration}/>
 				<p> {description} </p>
-				<Rating {...rest} />
-				<Button {...rest} />
+				<Rating rating={rating} />
+				<Button soldedOut={soldedOut} />
 			</div>
 		</div>
 	)

@@ -1,20 +1,19 @@
-.star {
+.stars {
 	display: inline-block;
 }
 
-.star input[type=checkbox]{
-	// display: none;
-}
-
-.star label {
+.star {
     font-size: 18px;
     padding: 0;
     cursor: pointer;
     transition: all .3s ease-in-out;
 }
 
-.star label:hover,
-.star label:hover ~ label,
-.star input[type=checkbox]:checked ~ label {
+.star:hover {
     color: #f2b600;
+}
+
+.starFill {
+	font-size: 20px;
+	color: #f2b600;
 }
