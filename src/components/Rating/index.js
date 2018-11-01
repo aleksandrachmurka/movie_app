@@ -13,7 +13,7 @@ const ratingDesc = {
 };
 
 class Rating extends Component {
-	constructor({rating}) {
+	constructor(rating) {
 		super(rating);
 		this.state = {
 			value: rating,
@@ -29,13 +29,13 @@ class Rating extends Component {
 		this.setState({value: rate});
 	}
 
-	handleMouseEnter = (rate) => {
-		this.setState({value: rate});
-	}
+	// handleMouseEnter = (rate) => {
+	// 	this.setState({value: rate});
+	// }
 
-	handleMouseLeave = (previousRate) => {
-		this.setState({value: previousRate});
-	}
+	// handleMouseLeave = (previousRate) => {
+	// 	this.setState({value: previousRate});
+	// }
 
 
 	render(){
@@ -46,8 +46,8 @@ class Rating extends Component {
 							<FontAwesomeIcon icon={faStar} id={starKey}
 							className={ starKey <=this.state.value ? styles.starFill : styles.star}
 							onClick={()=>this.handleClick(starKey)}
-							onMouseEnter={()=> this.handleMouseEnter(starKey)}
-							onMouseLeave={()=>this.handleMouseLeave(previousRate)}
+							// onMouseEnter={()=> this.handleMouseEnter(starKey)}
+							// onMouseLeave={()=>this.handleMouseLeave(previousRate)}
 							/>
 					))
 				}
