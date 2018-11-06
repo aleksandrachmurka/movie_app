@@ -1,13 +1,12 @@
 .box {
-	position: relative;
-	top: -47px;
-	left: 227px;
+  width: 300px;
+	position: absolute;
+	top: 0;
+  left: 400px;
   padding: 15px 15px 15px 64px;
   color: #000;
-  border: 1px solid #000;
-  border-right: none;
+  border: 2px solid #000;
   border-top: none;
-	width: 60%;
 }
 
 .icon {

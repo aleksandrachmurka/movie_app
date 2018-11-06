@@ -41,7 +41,7 @@ class Rating extends Component {
 
 	render(){
 		return(
-			<div>
+			<div className={styles.container}>
 				{
 					Object.keys(ratingDesc).map(starKey=> (
 							<FontAwesomeIcon icon={faStar} id={starKey}

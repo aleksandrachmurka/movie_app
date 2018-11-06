@@ -1,0 +1,34 @@
+.container {
+	display: flex;
+	width: 50%;
+}
+
+h4 {
+	font-weight: normal;
+	margin: 0;
+	padding-right: 2%;
+}
+
+.show {
+	border: 2px solid black;
+	width: 70px;
+	height: 50px;
+	padding:10px;
+}
+
+.show + .show {
+	border-left: none;
+}
+
+.show:hover {
+	cursor: pointer;
+	background-color: #f2b600;
+}
+
+.showPicked {
+	border: 2px solid black;
+	width: 70px;
+	height: 50px;
+	padding:10px;
+	background-color: #f2b600;
+}
