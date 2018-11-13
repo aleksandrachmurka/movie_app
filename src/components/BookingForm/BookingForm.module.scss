@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.alert {
+	color:  #c43636;
+	font-weight: bold;
+	text-decoration: underline;
+}

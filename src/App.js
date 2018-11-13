@@ -2,6 +2,7 @@ import React from 'react';
 import {Route, Redirect, Switch} from 'react-router-dom';
 import routesConfig from './routes/index.js';
 import Navigation from './components/Navigation';
+import FourOFour from './components/FourOFour';
 import styles from './App.module.scss';
 
 const routes = routesConfig.routes.map(({id, path, component, exact}) => (
@@ -22,16 +23,15 @@ const redirect = routesConfig.redirect.map(({id, from, to, exact}) => (
     />
 ));
 
-
 const App = () => (
   <div className={styles.container}>
     <Navigation />
     <Switch>
         {routes}
         {redirect}
+        <Route path="*" component={FourOFour} />
     </Switch>
   </div>
 );
-
 
 export default App;

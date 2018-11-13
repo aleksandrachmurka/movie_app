@@ -13,13 +13,13 @@ export default {
 		},
 		{
 			id: 2,
-			path: '/movie/:id',
+			path: '/movies/:id',
 			component: MovieDetails,
 			exact: true,
 		},
 		{
 			id: 3,
-			path: '/bookings/:userId',
+			path: '/bookings/:id',
 			component: BookingsList,
 			exact: true,
 		}
@@ -31,11 +31,13 @@ export default {
 			id: 1,
 			from: '/',
 			to: '/movies',
+			exact: true,
 		},
 		{
 			id: 2,
-			from: 'redirect',
+			from: '/redirect',
 			to: '/movies',
+			exact: true,
 		}
 	]
 }

@@ -7,7 +7,7 @@ const RunningTime = ({duration}) => (
 	<div className={styles.time}>
 		<img src={iconTimes} alt='clock icon'/>
 		<span>
-			Czas trwania: {Math.round(duration /60)} min
+			Czas trwania: {duration} min
 		</span>
 	</div>
 )

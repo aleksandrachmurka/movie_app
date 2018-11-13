@@ -5,13 +5,13 @@ import styles from './Navigation.module.scss';
 const Navigation = () => (
 	<ul className={styles.navigation}>
 		<li>
-			<NavLink to="/movies" className={styles.navElement}>Movies</NavLink>
+			<NavLink to="/movies" className={styles.navElement} activeClassName={styles.active}>Movies</NavLink>
 		</li>
 		<li>
-			<NavLink to="/bookings/1" className={styles.navElement}>My bookings</NavLink>
+			<NavLink to="/bookings/3" className={styles.navElement} activeClassName={styles.active}>My bookings</NavLink>
 		</li>
 		<li>
-			<NavLink to="/redirect" className={styles.navElement}>Coming Soon</NavLink>
+			<NavLink to="/redirect" className={styles.navElement} activeClassName={styles.active}>Coming Soon</NavLink>
 		</li>
 	</ul>
 

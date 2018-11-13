@@ -1,19 +1,21 @@
-import React, {Component} from 'react';
+import React from 'react';
+import formatTime from '../../utils/formatTime.js';
 import styles from './ShowTimes.module.scss';
 
-const ShowTimes = ({pickedShow, shows, onClick}) => (
+const ShowTimes = (props) => (
 	<div className={styles.container}>
-				<h4>Godzina seansu</h4>
-				{shows.map(show => (
-					<div
-						id={show.id}
-						key={show.id}
-						className={pickedShow === show.id ? styles.showPicked : styles.show}
-						onClick={()=> onClick(show.id)}
-					>
-						{show.time}
-					</div>
-				))}
+		<label htmlFor="shows">Godzina seansu</label>
+		<select id="shows" value={props.bookedTime} onChange={props.onChange}>
+			<option></option>
+			{props.shows.map(show => (
+				<option
+					value={show}
+					key={show}
+				>
+					{formatTime(show)}
+				</option>
+			))}
+		</select>
 	</div>
 )
 

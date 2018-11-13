@@ -1,85 +1,73 @@
 import React, {Component} from 'react';
+import axios from 'axios';
+import isEmpty from 'lodash/isEmpty';
+import Loader from 'react-loader';
+import {api} from '../../config';
 import BookedMovie from '../BookedMovie';
 
-
 class BookingsList extends Component  {
-  state = {
-    bookedMovies : [
-      {
-        id: 1,
-        title: 'First Man',
-        releaseDate: '18.10.2018',
-        desc: 'Fragment życia astronauty Neila Armstronga i jego legendarnej misji kosmicznej, dzięki której jako pierwszy człowiek stanął na Księżycu.',
-        duration: 8460,
-        img: 'https://i.imgur.com/0oo7XJc.jpg',
-        rating: 4,
-        soldedOut: false,
-        alert: {
-            message: 'Ostatnie miejsca',
-            type: 'warning',
-        }
-      },
-      {
-        id: 2,
-        title: 'Mission: Impossible - Fallout',
-        desc: 'Konsekwencje zakończonej niepowodzeniem misji IMF może odczuć cały świat. Aby zapobiec katastrofie, Ethan Hunt i jego zespół muszą stanąć do wyścigu z czasem.',
-        duration: 8820,
-        releaseDate: '09.09.2018',
-        img: 'https://i.imgur.com/rOXaXH6.jpg',
-        rating: 5,
-        soldedOut: false,
-        alert: {
-            message: 'Ostatnie miejsca',
-            type: 'warning',
-        }
-      },
-      {
-        id: 3,
-        title: 'American Animals',
-        releaseDate: '01.09.2018',
-        desc: 'Wracając od kolegi, Will zauważa coś przerażającego. Pobliskie laboratorium rządowe skrywa złowrogą tajemnicę. Ogólnie jest nie za wesoło,' +
-        ' ale wszystko kończy się dobrze i żyją długo i szczęśliwie.',
-        duration: 3200,
-        img: 'https://i.imgur.com/3koreob.jpg',
-        rating: 3,
-        soldedOut: true,
-        alert: {
-            message: 'Nowość!',
-            type: 'success',
-        }
-      },
-    ]
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      bookedMovies: [],
+      loading: true,
+      deleting: false,
+    };
+  }
 
-  deleteBooking = (id) => {
-    this.setState({
-      bookedMovies: this.state.bookedMovies.filter(movie => movie.id !== id),
-    })
+  componentDidMount(){
+    this.fetchBookings();
+  }
+
+  fetchBookings = async () => {
+    const {params} = this.props.match;
+    this.setState({loading: true});
+    try {
+      const response = await axios.get(`${api.url}/mybookings/${params.id}`);
+      this.setState({loading: false, bookedMovies: response.data});
+    } catch (error) {
+      this.setState({loading: false});
+    }
+  }
+
+  deleteBooking = async (id) => {
+    this.setState({deleting: true});
+    try {
+      await axios.delete(`${api.url}/bookings/${id}`);
+      this.setState({deleting: false});
+      this.fetchBookings();
+    } catch (error) {
+      this.setState({deleting: false});
+    }
   }
 
   render() {
-    const {bookedMovies} = this.state;
+    const {bookedMovies, deleting} = this.state;
+
+    if (isEmpty(bookedMovies)) {
+      return <Loader />;
+    }
+
     return (
       <div>
-      {
-        bookedMovies.map(bookedMovie =>
-        (<BookedMovie
-            id={bookedMovie.id}
-            key = {bookedMovie.id}
-            title={bookedMovie.title}
-            releaseDate={bookedMovie.releaseDate}
-            description={bookedMovie.desc}
-            duration={bookedMovie.duration}
-            image={bookedMovie.img}
-            rating={bookedMovie.rating}
-            deleteBooking={this.deleteBooking}
-           />
-        ))
-      }
+        {
+          bookedMovies.map(bookedMovie =>
+          (<BookedMovie
+              id={bookedMovie.id}
+              title={bookedMovie.title}
+              releaseDate={bookedMovie.releaseDate}
+              description={bookedMovie.description}
+              duration={bookedMovie.duration}
+              image={bookedMovie.image}
+              bookedTime={bookedMovie.reservedTime}
+              bookedSeat={bookedMovie.reservedSetas}
+              deleteBooking={()=>this.deleteBooking(bookedMovie.bookingId)}
+             />
+          ))
+        }
       </div>
     )
   }
 }
-
 
 export default BookingsList;
