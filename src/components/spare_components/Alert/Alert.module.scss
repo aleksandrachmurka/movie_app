@@ -1,0 +1,30 @@
+.box {
+  width: 300px;
+	position: absolute;
+	top: 0;
+  left: 400px;
+  padding: 15px 15px 15px 64px;
+  color: #000;
+  border: 2px solid #000;
+  border-top: none;
+}
+
+.icon {
+  height: 24px;
+  width: 24px;
+  position: absolute;
+  top: 16px;
+  left: 24px;
+}
+
+.success {
+  background-color: #f6ffed;
+}
+
+.error {
+  background-color: #fff1f0;
+}
+
+.warning {
+  background-color: #fffbe6;
+}
