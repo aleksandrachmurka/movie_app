@@ -33,6 +33,7 @@
   ],
   "devDependencies": {
     "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
     "jest": "^23.6.0",
     "react-loader": "^2.4.5"
   }
