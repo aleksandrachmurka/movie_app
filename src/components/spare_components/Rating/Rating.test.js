@@ -11,7 +11,7 @@ describe('Rating', () =>  {
 		const wrapper = mount(<Rating />);
 		const description = () => wrapper.find('[data-test="description"]');
 		const star = () => wrapper.find('[data-test="star"]');
-		const fillledStar = () => wrapper.find('.styles.starFill');
+		const fillledStar = () => wrapper.find('.starFill');
 
 		return {
 			wrapper,
@@ -25,15 +25,12 @@ describe('Rating', () =>  {
 		const { wrapper, description, star } = setup();
 
 		it('should show \'Brak oceny\' when there is no rating', () => {
-			console.log(wrapper.state());
-			expect(description()).text().toBe('Brak oceny');
+			expect(description().text()).toBe(' Brak oceny');
 		});
 
 		it('should show correct rating description', () => {
-			console.log(wrapper.state());
 			star().at(2).simulate('click');
-			expect(description()).text().toBe('Zjadliwy');
-			console.log(wrapper.state());
+			expect(description().text()).toBe(' Ujdzie');
 		});
 	});
 
@@ -41,31 +38,27 @@ describe('Rating', () =>  {
 		const { wrapper, description, star, fillledStar } = setup();
 
 		it('should set rating when clicked', () =>{
-			console.log(wrapper.state());
 			star().at(1).simulate('click');
 			expect(fillledStar()).toHaveLength(2);
-			console.log(wrapper.state());
 		});
 
 		it('should set rating to 0 when clicked twice', () => {
-			console.log(wrapper.state());
 			star().at(2).simulate('click');
-			expect(fillledStar()).toHaveLength(3);
+			expect(fillledStar()).toHaveLength(4);
 			star().at(2).simulate('click');
 			expect(fillledStar()).toHaveLength(0);
-			console.log(wrapper.state());
 		});
 
 		it('should set rating when hovered', () => {
-
+			star().at(2).simulate('mouseenter');
+			expect(fillledStar()).toHaveLength(4);
 		});
 
 		it('should reset rating after hover', () => {
-
+			star().at(2).simulate('mouseenter');
+			expect(fillledStar()).toHaveLength(4);
+			star().at(2).simulate('mouseleave');
+			expect(fillledStar()).toHaveLength(0);
 		});
 	});
 });
-
-//expect(containerStyle).to.have.property('opacity', '1');
-//prop('style')
-//.hasClass('classname')
