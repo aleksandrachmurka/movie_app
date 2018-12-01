@@ -3,10 +3,12 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import formatDate from '../../utils/formatDate';
 import formatTime from '../../utils/formatTime';
+import { connect } from 'react-redux';
+import { increaseCounter }from '../../actions/index.js';
 import styles from './Movie.module.scss';
 import RunningTime from '../RunningTime';
 
-const Movie = ({id, title, image, releaseDate, duration, description, availableSeats}) => {
+const Movie = ({id, title, image, releaseDate, duration, description, availableSeats, counter, increaseCounter}) => {
 	return (
 		<div className={styles.container}>
 			<div styles={styles.movieDetails}>
@@ -19,6 +21,7 @@ const Movie = ({id, title, image, releaseDate, duration, description, availableS
 					<RunningTime  duration={duration}/>
 					<p> {description} </p>
 				</div>
+				<button onClick={increaseCounter}>{counter}</button>
 			</div>
 			<NavLink to={`/movies/${id}`}>
             	<button className={styles.button}>Oglądam!</button>
@@ -41,4 +44,8 @@ Movie.proptypes = {
 	description: PropTypes.string,
 }
 
-export default Movie;
+const mapStateToProps = store => ({
+	counter: store.moviesList.counter,
+});
+
+export default connect(mapStateToProps, { increaseCounter })(Movie);

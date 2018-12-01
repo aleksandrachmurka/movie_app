@@ -6,6 +6,8 @@ import isEmpty from 'lodash/isEmpty';
 import Loader from 'react-loader';
 import formatDate from '../../utils/formatDate';
 import formatTime from '../../utils/formatTime';
+import { connect } from 'react-redux';
+import { addToFavorites, removeFromFavorites } from '../../actions/index.js';
 import {api} from '../../config';
 import styles from './MovieDetails.module.scss';
 import RunningTime from '../RunningTime';
@@ -16,6 +18,7 @@ class MovieDetails extends Component {
 	state = {
 		movie: {},
 		loading: false,
+		favorite: this.props.favorite,
 	}
 
 	componentDidMount(){
@@ -52,6 +55,11 @@ class MovieDetails extends Component {
 						<RunningTime  duration={movie.duration}/>
 						<p> {movie.description} </p>
 					</div>
+					{ this.state.favorite === false ?
+					<button onClick={()=>this.props.addMovie(movie.title)}>Dodaj do ulubionych</button>
+						:
+					<button onClick={()=>this.props.removeMovie(movie.title)}>Usuń z ulubionych</button>
+					}
 				</div>
 
 				<BookingForm params={this.props.match.params} shows={movie.availableTimes} seats={movie.seats} />
@@ -77,4 +85,8 @@ MovieDetails.proptypes = {
 	description: PropTypes.string,
 }
 
-export default MovieDetails;
+const mapStateToProps = store => ({
+	favorite: store.addToFavorites.favorite,
+});
+
+export default connect(mapStateToProps, { addMovie: addToFavorites, removeMovie: removeFromFavorites })(MovieDetails);
