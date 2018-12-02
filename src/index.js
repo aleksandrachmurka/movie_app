@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { logger } from 'redux-logger';
 import thunk from 'redux-thunk';
 import moviesListReducer from './reducers/moviesListReducer.js';
+import movieReducer from './reducers/movieReducer.js';
 import addToFavoritesReducer from './reducers/addToFavoritesReducer.js';
 import bookingsReducer from './reducers/bookingsReducer.js';
 import App from './App';
@@ -14,6 +15,7 @@ import './index.scss';
 const reducers = combineReducers({
 	moviesList: moviesListReducer,
 	movies: moviesListReducer,
+	movie: movieReducer,
 	addToFavorites: addToFavoritesReducer,
 	bookings: bookingsReducer,
 });

@@ -16,17 +16,6 @@ class MoviesList extends Component {
     this.props.fetchMoviesList();
   }
 
-  // fetchMovies = async () => {
-  //   this.setState({loading: true});
-  //   try {
-  //     const response = await axios.get(`${api.url}/movies`);
-  //     this.setState({loading: false, movies: response.data});
-  //   } catch (error) {
-  //     this.setState({loading: false});
-  //   }
-
-  // }
-
   render() {
     const {movies} = this.props;
 
@@ -34,7 +23,9 @@ class MoviesList extends Component {
       return <Loader />;
     }
 
-    console.log(this.props.favorites)
+    if (this.props.error === true) {
+      return <p>Sorry, we could not load movies</p>
+    }
 
     return(
 
@@ -53,7 +44,18 @@ const mapStateToProps = store => ({
   favorites: store.addToFavorites.favorites,
   loading: store.movies.loading,
   movies: store.movies.movies,
+  error: store.movies.error,
 });
 
 export default connect(mapStateToProps,  { fetchMoviesList: fetchMovies})(MoviesList);
 
+//notes
+  // fetchMovies = async () => {
+  //   this.setState({loading: true});
+  //   try {
+  //     const response = await axios.get(`${api.url}/movies`);
+  //     this.setState({loading: false, movies: response.data});
+  //   } catch (error) {
+  //     this.setState({loading: false});
+  //   }
+  // }

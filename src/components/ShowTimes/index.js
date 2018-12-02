@@ -6,7 +6,7 @@ const ShowTimes = (props) => (
 	<div className={styles.container}>
 		<label htmlFor="shows">Godzina seansu</label>
 		<select id="shows" value={props.bookedTime} onChange={props.onChange}>
-			<option></option>
+			<option>wybierz</option>
 			{props.shows.map(show => (
 				<option
 					value={show}

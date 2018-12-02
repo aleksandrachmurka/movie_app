@@ -1,7 +1,7 @@
 const initialState = {
 	movies: [],
 	loading: false,
-	error: '',
+	error: false,
 	counter: 55,
 }
 
@@ -14,7 +14,7 @@ const moviesListReducer = (state = initialState, action) => {
 		case 'FETCH_MOVIES_SUCESS':
 			return {...state, movies: action.movies, loading: false};
 		case 'FETCH_MOVIES_REJECTED':
-			return {...state, error: 'Error', loading: false};
+			return {...state, error: true, loading: false};
 		default:
 			return state;
 	}

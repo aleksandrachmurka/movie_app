@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import isEmpty from 'lodash/isEmpty';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 import { fetchBookings } from '../../actions/fetchBookings.js';
 import { deleteBooking } from '../../actions/deleteBooking.js';
-import {api} from '../../config';
 import BookedMovie from '../BookedMovie';
 
 class BookingsList extends Component  {
@@ -23,6 +21,10 @@ class BookingsList extends Component  {
 
     if (isEmpty(bookedMovies)) {
       return <Loader />;
+    }
+
+    if (this.props.error === true) {
+      return <p>Sorry, we could not load your bookings</p>
     }
 
     return (
@@ -51,6 +53,7 @@ const mapStateToProps = store => ({
   bookedMovies: store.bookings.bookings,
   loading: store.bookings.loading,
   deleting: store.bookings.deleting,
+  error: store.bookings.error,
 });
 
 export default connect(mapStateToProps, { fetchBook: fetchBookings, deleteBook: deleteBooking })(BookingsList);

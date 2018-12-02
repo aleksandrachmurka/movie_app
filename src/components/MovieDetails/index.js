@@ -1,43 +1,29 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import isEmpty from 'lodash/isEmpty';
 import Loader from 'react-loader';
 import formatDate from '../../utils/formatDate';
 import formatTime from '../../utils/formatTime';
 import { connect } from 'react-redux';
 import { addToFavorites, removeFromFavorites } from '../../actions/index.js';
-import {api} from '../../config';
+import { fetchMovie } from '../../actions/fetchMovie.js';
 import styles from './MovieDetails.module.scss';
 import RunningTime from '../RunningTime';
 import BookingForm from '../BookingForm';
 
 
 class MovieDetails extends Component {
-	state = {
-		movie: {},
-		loading: false,
-		favorite: this.props.favorite,
-	}
+  constructor(props) {
+    super(props);
+  }
 
 	componentDidMount(){
-		this.fetchMovie();
-	}
-
-	fetchMovie = async () => {
-		const {params} = this.props.match;
-		this.setState({loading: true});
-		try {
-			const response = await axios.get(`${api.url}/movies/${params.id}`);
-      this.setState({loading: false, movie: response.data});
-		} catch (error) {
-			this.setState({loading: false});
-		}
+		this.props.fetchSingleMovie(this.props.match.params.id);
 	}
 
 	render() {
-		const {movie} = this.state;
+		const {movie} = this.props;
 
 		if (isEmpty(movie)) {
 	      return <Loader />;
@@ -55,7 +41,7 @@ class MovieDetails extends Component {
 						<RunningTime  duration={movie.duration}/>
 						<p> {movie.description} </p>
 					</div>
-					{ this.state.favorite === false ?
+					{ this.props.favorite === false ?
 					<button onClick={()=>this.props.addMovie(movie.title)}>Dodaj do ulubionych</button>
 						:
 					<button onClick={()=>this.props.removeMovie(movie.title)}>Usuń z ulubionych</button>
@@ -64,8 +50,8 @@ class MovieDetails extends Component {
 
 				<BookingForm params={this.props.match.params} shows={movie.availableTimes} seats={movie.seats} />
 				<NavLink to='/movies'>
-	        <button className={styles.button}>Powrót</button>
-	      </NavLink>
+	        		<button className={styles.button}>Powrót</button>
+	      		</NavLink>
 			</div>
 		)
 	}
@@ -87,6 +73,21 @@ MovieDetails.proptypes = {
 
 const mapStateToProps = store => ({
 	favorite: store.addToFavorites.favorite,
+	movie: store.movie.movie,
+	loading: store.movie.loading,
+	error: store.movie.error,
 });
 
-export default connect(mapStateToProps, { addMovie: addToFavorites, removeMovie: removeFromFavorites })(MovieDetails);
+export default connect(mapStateToProps, { fetchSingleMovie: fetchMovie, addMovie: addToFavorites, removeMovie: removeFromFavorites })(MovieDetails);
+
+//notes
+	// fetchMovie = async () => {
+	// 	const {params} = this.props.match;
+	// 	this.setState({loading: true});
+	// 	try {
+	// 		const response = await axios.get(`${api.url}/movies/${params.id}`);
+ //      this.setState({loading: false, movie: response.data});
+	// 	} catch (error) {
+	// 		this.setState({loading: false});
+	// 	}
+	// }

@@ -23,7 +23,7 @@ const BookedMovie = ({id, title, releaseDate, duration, description, image, book
 			<div className={styles.booking}>
 				<p>Godzina seansu: {formatTime(bookedTime)}</p>
 				<p>Ilość miejsc: {bookedSeat}</p>
-				<img className={styles.icon} src={deleteIcon} onClick={()=> deleteBooking(id)} />
+				<img className={styles.icon} src={deleteIcon} alt={`delete icon`} onClick={()=> deleteBooking(id)} />
 			</div>
 		</div>
 	)

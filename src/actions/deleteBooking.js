@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {api} from '../config';
+import { fetchBookings } from './fetchBookings.js';
 
 const deleteBookingStarted = () => {
 	return {
@@ -26,7 +27,7 @@ export const deleteBooking = (id) => (dispatch, getState) => {
 	axios.delete(`${api.url}/bookings/${id}`)
 	.then((response) => {
 		dispatch({ type: 'DELETE_BOOKING_SUCESS', id: id});
-		//fetchBookings
+		// dispatch(fetchBookings(id));
 	}).catch((error) => {
 		dispatch({ type: 'DELETE_BOOKING_REJECTED', error: error})
 	})

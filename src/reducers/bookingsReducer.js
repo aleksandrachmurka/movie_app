@@ -2,7 +2,7 @@ const initialState = {
 	bookings: [],
 	loading: true,
 	deleting: false,
-	error: '',
+	error: false,
 }
 
 const bookingsReducer = (state = initialState, action) => {
@@ -18,7 +18,7 @@ const bookingsReducer = (state = initialState, action) => {
 		case 'DELETE_BOOKINGS_SUCESS':
 			return {...state, bookings: [...state.bookings.filter(booking => booking.id !== action.id)], deleting: false};
 		case 'DELETE_BOOKINGS_REJECTED':
-			return {...state, error: 'Error', deleting: false};
+			return {...state, error: true, deleting: false};
 		default:
 			return state;
 	}
