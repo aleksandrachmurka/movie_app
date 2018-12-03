@@ -57,26 +57,3 @@ const mapStateToProps = store => ({
 });
 
 export default connect(mapStateToProps, { fetchBook: fetchBookings, deleteBook: deleteBooking })(BookingsList);
-
-//notes
-  // fetchBookings = async () => {
-  //   const {params} = this.props.match;
-  //   this.setState({loading: true});
-  //   try {
-  //     const response = await axios.get(`${api.url}/mybookings/${params.id}`);
-  //     this.setState({loading: false, bookedMovies: response.data});
-  //   } catch (error) {
-  //     this.setState({loading: false});
-  //   }
-  // }
-
-  //   deleteBooking = async (id) => {
-  //   this.setState({deleting: true});
-  //   try {
-  //     await axios.delete(`${api.url}/bookings/${id}`);
-  //     this.setState({deleting: false});
-  //     this.fetchBookings();
-  //   } catch (error) {
-  //     this.setState({deleting: false});
-  //   }
-  // }

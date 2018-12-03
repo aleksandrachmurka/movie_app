@@ -48,14 +48,3 @@ const mapStateToProps = store => ({
 });
 
 export default connect(mapStateToProps,  { fetchMoviesList: fetchMovies})(MoviesList);
-
-//notes
-  // fetchMovies = async () => {
-  //   this.setState({loading: true});
-  //   try {
-  //     const response = await axios.get(`${api.url}/movies`);
-  //     this.setState({loading: false, movies: response.data});
-  //   } catch (error) {
-  //     this.setState({loading: false});
-  //   }
-  // }

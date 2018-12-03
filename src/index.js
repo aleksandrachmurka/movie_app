@@ -9,6 +9,7 @@ import moviesListReducer from './reducers/moviesListReducer.js';
 import movieReducer from './reducers/movieReducer.js';
 import addToFavoritesReducer from './reducers/addToFavoritesReducer.js';
 import bookingsReducer from './reducers/bookingsReducer.js';
+import bookingReducer from './reducers/bookingReducer.js';
 import App from './App';
 import './index.scss';
 
@@ -18,6 +19,7 @@ const reducers = combineReducers({
 	movie: movieReducer,
 	addToFavorites: addToFavoritesReducer,
 	bookings: bookingsReducer,
+	booking: bookingReducer,
 });
 
 const store = createStore(reducers, applyMiddleware(thunk, logger));

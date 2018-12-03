@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
 import styles from './BookingForm.module.scss';
-import axios from 'axios';
 import isEmpty from 'lodash/isEmpty';
-import {api} from '../../config';
+import { connect } from 'react-redux';
+import { addBooking } from '../../actions/addBooking.js';
 import ShowTimes from '../ShowTimes';
 import Places from '../Places';
 import ButtonBuy from '../ButtonBuy';
@@ -12,21 +12,9 @@ class BookingForm extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			isSendingData: false,
-			error: false,
-			booked: false,
+			warning: false,
 			bookedTime: null,
 			bookedSeat: null,
-		}
-	}
-
-	addBooking = async (data) => {
-		this.setState({isSendingData: true});
-		try {
-			await axios.post(`${api.url}/bookings`, data);
-			this.setState({isSendingData: false, booked: true});
-		} catch (error) {
-			this.setState({isSendingData: false});
 		}
 	}
 
@@ -41,28 +29,26 @@ class BookingForm extends Component {
 	handleBooking = (event) => {
 		event.preventDefault();
 		const {bookedTime, bookedSeat}= this.state;
-		const {params} = this.props;
 
 		if (isEmpty(bookedTime) || bookedSeat===null ) {
-			this.setState({error: true});
+			this.setState({warning: true});
 			return;
 		}
 
 		const data = {
-			movieId: params.id,
+			movieId: this.props.params.id,
 			reservedSetas: bookedSeat,
 			reservedTime: bookedTime,
 			userId: 3,
 		}
 
-		this.addBooking(data);
+		this.props.addBook(data);
 	}
-
 
 	render() {
 		const {shows, seats} = this.props;
 
-		if (this.state.booked) {
+		if (this.props.booked) {
 	    	return <Redirect to="/bookings/3"/>
 	    }
 
@@ -71,13 +57,18 @@ class BookingForm extends Component {
 				<div className={styles.container}>
 					<ShowTimes shows={shows} bookedTime={this.state.bookedTime} onChange={this.selectTime} />
 					<Places seats={seats} onChange={this.selectSeat} />
-					<ButtonBuy onClick={this.handleBooking} disabled={this.isSendingData}/>
+					<ButtonBuy onClick={this.handleBooking} disabled={this.props.isBooking}/>
 				</div>
-				{this.state.error && <div className={styles.alert}>Nie wybrano ilości miejsc lub godziny seansu</div>}
+				{this.state.warning && <div className={styles.alert}>Nie wybrano ilości miejsc lub godziny seansu</div>}
 			</div>
 		)
 	}
 }
 
+const mapStateToProps = store => ({
+  booked: store.booking.booked,
+  isBooking: store.booking.isBooking,
+  error: store.booking.error,
+});
 
-export default BookingForm;
+export default connect(mapStateToProps, { addBook: addBooking })(BookingForm);

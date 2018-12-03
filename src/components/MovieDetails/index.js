@@ -79,15 +79,3 @@ const mapStateToProps = store => ({
 });
 
 export default connect(mapStateToProps, { fetchSingleMovie: fetchMovie, addMovie: addToFavorites, removeMovie: removeFromFavorites })(MovieDetails);
-
-//notes
-	// fetchMovie = async () => {
-	// 	const {params} = this.props.match;
-	// 	this.setState({loading: true});
-	// 	try {
-	// 		const response = await axios.get(`${api.url}/movies/${params.id}`);
- //      this.setState({loading: false, movie: response.data});
-	// 	} catch (error) {
-	// 		this.setState({loading: false});
-	// 	}
-	// }
