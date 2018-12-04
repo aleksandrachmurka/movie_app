@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import formatDate from '../../utils/formatDate';
-import formatTime from '../../utils/formatTime';
 import { connect } from 'react-redux';
 import { increaseCounter }from '../../actions/index.js';
 import styles from './Movie.module.scss';

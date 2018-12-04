@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import isEmpty from 'lodash/isEmpty';
 import Loader from 'react-loader';
-import {api} from '../../config';
 import { connect } from 'react-redux';
 import { fetchMovies } from '../../actions/fetchMovies.js';
 import Movie from '../Movie';
@@ -32,6 +30,7 @@ class MoviesList extends Component {
         movies.map(movie =>
             (
               <Movie
+                key={movie['_id']}
                 id={movie['_id']}
                 {...movie}
               />

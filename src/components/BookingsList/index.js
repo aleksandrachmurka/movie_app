@@ -32,6 +32,7 @@ class BookingsList extends Component  {
         {
           bookedMovies[0].map(bookedMovie =>
           (<BookedMovie
+              key={bookedMovie.key}
               id={bookedMovie.id}
               title={bookedMovie.title}
               releaseDate={bookedMovie.releaseDate}

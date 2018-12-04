@@ -8,9 +8,9 @@ const deleteBookingStarted = () => {
 	}
 }
 
-const deleteBookingSucess = (id) => {
+const deleteBookingSuccess = (id) => {
 	return {
-		type:'DELETE_BOOKING_SUCESS',
+		type:'DELETE_BOOKING_SUCCESS',
 		id: id,
 	}
 }
@@ -26,8 +26,8 @@ export const deleteBooking = (id) => (dispatch, getState) => {
 	dispatch(deleteBookingStarted());
 	axios.delete(`${api.url}/bookings/${id}`)
 	.then((response) => {
-		dispatch({ type: 'DELETE_BOOKING_SUCESS', id: id});
-		// dispatch(fetchBookings(id));
+		dispatch({ type: 'DELETE_BOOKING_SUCCESS', id: id});
+		dispatch(fetchBookings(3));
 	}).catch((error) => {
 		dispatch({ type: 'DELETE_BOOKING_REJECTED', error: error})
 	})

@@ -7,9 +7,9 @@ const fetchMoviesStarted = () =>{
 	}
 }
 
-const fetchMoviesSucess = (movies) => {
+const fetchMoviesSuccess = (movies) => {
 	return {
-		type: 'FETCH_MOVIES_SUCESS',
+		type: 'FETCH_MOVIES_SUCCESS',
 		movies: movies,
 	}
 }
@@ -25,7 +25,7 @@ export const fetchMovies = () => (dispatch, getState) => {
 	dispatch(fetchMoviesStarted());
 	axios.get(`${api.url}/movies`)
 	.then((response) => {
-		dispatch({ type: 'FETCH_MOVIES_SUCESS', movies: response.data});
+		dispatch({ type: 'FETCH_MOVIES_SUCCESS', movies: response.data});
 	}).catch((error) => {
 		dispatch({ type: 'FETCH_MOVIES_REJECTED', error: error})
 	})

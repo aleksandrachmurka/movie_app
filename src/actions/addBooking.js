@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {api} from '../config';
+import { fetchBookings } from './fetchBookings.js';
 
 const addBookingStarted = () => {
 	return {
@@ -7,9 +8,9 @@ const addBookingStarted = () => {
 	}
 }
 
-const addBookingSucess = (data) => {
+const addBookingSuccess = (data) => {
 	return {
-		type:'ADD_BOOKING_SUCESS',
+		type:'ADD_BOOKING_SUCCESS',
 		data: data,
 	}
 }
@@ -25,7 +26,8 @@ export const addBooking = (data) => (dispatch, getState) => {
 	dispatch(addBookingStarted());
 	axios.post(`${api.url}/bookings`, data)
 	.then((response) => {
-		dispatch({ type: 'ADD_BOOKING_SUCESS', data: data});
+		dispatch({ type: 'ADD_BOOKING_SUCCESS', data: data});
+		dispatch(fetchBookings(3));
 	}).catch((error) => {
 		dispatch({ type: 'ADD_BOOKING_REJECTED', error: error})
 	})

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import isEmpty from 'lodash/isEmpty';
 import Loader from 'react-loader';
 import formatDate from '../../utils/formatDate';
-import formatTime from '../../utils/formatTime';
 import { connect } from 'react-redux';
 import { addToFavorites, removeFromFavorites } from '../../actions/index.js';
 import { fetchMovie } from '../../actions/fetchMovie.js';
