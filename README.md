@@ -1,31 +1,24 @@
-# Spotkanie 2 / Zadanie nr 1 &ndash; Component Props
+﻿Movie App
 
-### Przygotowanie
+project build during React bootcamp organised by fireup.pro
 
-> Pobierz kod z repozytorium bitbucketa
- 
-> Zanistaluj zależności:
-> - ```npm install```
+## App
+* loads a list of movies
+* lets you choose a movie to get details about available shows
+* enables booking of a ticket
+* you can display your bookings 
+* you can delete a booking
 
-> Uruchom aplikacje:
-> - ```npm start```
+## How to start
+* clone or download this repo
+* navigate to app folder
+* install all dependencies with 'npm install'
+* run with 'npm start'
 
-> **Do dzieła!.**
-
-
-## Zadanie 
-
-### Przekazywanie propsów i proste operacje na nich
-
-#### Celem zadania jest stworzenie prostych Card z informacjami o najblizszych premierach
-
-- Struktura folderów została już przygotowana
-
-- Stwórz komponent Card, RunningTime oraz Button
- 
-- Ikonka zegara, która potrzebna jest dla komponentu RunningTime znajduje się w src/images. 
- Plik svg można importować w ten sam sposób co np. plik ze stylami
- 
-- Jeśli chodzi o flow Twoich komponentów to wygląda ono tak: App => Card => RunningTime && Button
- 
-- Nie bój się pytać i prosić o pomoc prowadzących ;)
+## Dependencies
+* API by Sebastian Janeczek
+* React - bootstrapped with create-react-app
+* React Router
+* Font Awesome (+react-fontawesome)
+* Axios
+* Lodash
