@@ -1,9 +1,9 @@
 ﻿Movie App
 
-project build during React bootcamp organised by fireup.pro
+project built during React bootcamp organised by fireup.pro
 
 ## App
-* loads a list of movies
+* shows a list of movies
 * lets you choose a movie to get details about available shows
 * enables booking of a ticket
 * you can display your bookings 
