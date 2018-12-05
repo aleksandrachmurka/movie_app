@@ -1,9 +1,3 @@
-export const increaseCounter = () => {
-	return {
-		type: 'INCREASE_COUNTER',
-	}
-}
-
 export const addToFavorites = (title) => {
 	return {
 		type: 'ADD_TO_FAVORITES',
