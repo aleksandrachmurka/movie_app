@@ -1,6 +1,7 @@
 import MoviesList from '../components/MoviesList';
 import MovieDetails from '../components/MovieDetails';
 import BookingsList from '../components/BookingsList';
+import BookingsList from '../components/FavoritesList';
 
 export default {
 	routes: [
@@ -21,6 +22,12 @@ export default {
 			id: 3,
 			path: '/bookings/:id',
 			component: BookingsList,
+			exact: true,
+		},
+		{
+			id: 3,
+			path: '/favorites',
+			component: FavoritesList,
 			exact: true,
 		}
 
