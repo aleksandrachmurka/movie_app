@@ -20,12 +20,11 @@ const Movie = ({id, title, image, releaseDate, duration, description, availableS
 					<RunningTime  duration={duration}/>
 					<p> {description} </p>
 				</div>
-				<button onClick={increaseCounter}>{counter}</button>
 			</div>
-			{ this.props.favorite === false ?
-				<button onClick={()=>this.props.addMovie(movie.title)}>Dodaj do ulubionych</button>
+			{ favorite === false ?
+				<button onClick={()=> addMovie(title)}>Dodaj do ulubionych</button>
 						:
-				<button onClick={()=>this.props.removeMovie(movie.title)}>Usuń z ulubionych</button>
+				<button onClick={()=> removeMovie(title)}>Usuń z ulubionych</button>
 			}
 			<NavLink to={`/movies/${id}`}>
             	<button className={styles.button}>Oglądam!</button>
@@ -49,7 +48,7 @@ Movie.proptypes = {
 }
 
 const mapStateToProps = store => ({
-	favorite: store.addToFavorites.favorite,
+	favorite: store.favorites.favorite,
 });
 
 export default connect(mapStateToProps, { addMovie: addToFavorites, removeMovie: removeFromFavorites })(Movie);

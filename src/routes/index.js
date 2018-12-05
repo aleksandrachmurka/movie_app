@@ -24,12 +24,12 @@ export default {
 			component: BookingsList,
 			exact: true,
 		},
-		{
-			id: 3,
-			path: '/favorites',
-			component: FavoritesList,
-			exact: true,
-		}
+		// {
+		// 	id: 3,
+		// 	path: '/favorites',
+		// 	component: FavoritesList,
+		// 	exact: true,
+		// }
 
 	],
 

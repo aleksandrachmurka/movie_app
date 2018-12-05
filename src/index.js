@@ -9,7 +9,7 @@ import moviesListReducer from './reducers/moviesListReducer.js';
 import movieReducer from './reducers/movieReducer.js';
 import bookingsReducer from './reducers/bookingsReducer.js';
 import bookingReducer from './reducers/bookingReducer.js';
-import favoritesReducer from './reducers/favortiesReducer.js';
+import favortiesReducer from './reducers/favoritesReducer.js';
 import App from './App';
 import './index.scss';
 
@@ -17,7 +17,6 @@ const reducers = combineReducers({
 	moviesList: moviesListReducer,
 	movies: moviesListReducer,
 	movie: movieReducer,
-	addToFavorites: addToFavoritesReducer,
 	bookings: bookingsReducer,
 	booking: bookingReducer,
 	favorites: favortiesReducer,

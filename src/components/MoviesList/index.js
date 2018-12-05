@@ -40,7 +40,6 @@ class MoviesList extends Component {
 }
 
 const mapStateToProps = store => ({
-  favorites: store.addToFavorites.favorites,
   loading: store.movies.loading,
   movies: store.movies.movies,
   error: store.movies.error,

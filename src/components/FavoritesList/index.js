@@ -2,16 +2,11 @@ import React, {Component} from 'react';
 import isEmpty from 'lodash/isEmpty';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
-import { fetchFavorites } from '../../actions/fetchFavorites.js';
 import Favorite from '../Favorite';
 
 class FavoritesList extends Component {
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount(){
-    this.props.fetchFavs();
   }
 
   render() {
@@ -44,4 +39,4 @@ const mapStateToProps = store => ({
   error: store.favorites.error,
 });
 
-export default connect(mapStateToProps,  { fetchFavoritesList: fetchFavs})(FavoritesList);
+export default connect(mapStateToProps)(FavoritesList);
