@@ -10,7 +10,7 @@ const bookingsReducer = (state = initialState, action) => {
 		case 'FETCH_BOOKINGS_STARTED':
 			return {...state, loading: true};
 		case 'FETCH_BOOKINGS_SUCCESS':
-			return { ...state, bookings: [...state.bookings, action.bookedMovies], loading: false};
+			return { ...state, bookings: [action.bookedMovies], loading: false};
 		case 'FETCH_BOOKINGS_REJECTED':
 			return { ...state, error: 'Error', loading: false};
 		case 'DELETE_BOOKINGS_STARTED':
