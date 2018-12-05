@@ -1,7 +1,7 @@
 import MoviesList from '../components/MoviesList';
 import MovieDetails from '../components/MovieDetails';
 import BookingsList from '../components/BookingsList';
-import BookingsList from '../components/FavoritesList';
+import FavoritesList from '../components/FavoritesList';
 
 export default {
 	routes: [
