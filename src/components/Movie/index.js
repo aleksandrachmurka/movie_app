@@ -7,7 +7,7 @@ import { addToFavorites, removeFromFavorites } from '../../actions/favorites.js'
 import styles from './Movie.module.scss';
 import RunningTime from '../RunningTime';
 
-const Movie = ({id, title, image, releaseDate, duration, description, availableSeats, favorite}) => {
+const Movie = ({id, title, image, releaseDate, duration, description, availableSeats, favorite, addMovie, removeMovie}) => {
 	return (
 		<div className={styles.container}>
 			<div styles={styles.movieDetails}>

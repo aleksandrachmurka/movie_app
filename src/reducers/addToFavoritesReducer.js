@@ -3,7 +3,7 @@ const initialState = {
 	favorite: false,
 }
 
-const addToFavoritesReducer = (state = initialState, action) => {
+const favoritesReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case 'ADD_TO_FAVORITES':
 			return { favorites: [...state.favorites, action.title], favorite: true};
@@ -14,4 +14,4 @@ const addToFavoritesReducer = (state = initialState, action) => {
 	}
 }
 
-export default addToFavoritesReducer;
+export default favoritesReducer;

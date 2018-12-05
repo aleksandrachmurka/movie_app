@@ -7,9 +7,9 @@ import { logger } from 'redux-logger';
 import thunk from 'redux-thunk';
 import moviesListReducer from './reducers/moviesListReducer.js';
 import movieReducer from './reducers/movieReducer.js';
-import addToFavoritesReducer from './reducers/addToFavoritesReducer.js';
 import bookingsReducer from './reducers/bookingsReducer.js';
 import bookingReducer from './reducers/bookingReducer.js';
+import favoritesReducer from './reducers/favortiesReducer.js';
 import App from './App';
 import './index.scss';
 
@@ -20,6 +20,7 @@ const reducers = combineReducers({
 	addToFavorites: addToFavoritesReducer,
 	bookings: bookingsReducer,
 	booking: bookingReducer,
+	favorites: favortiesReducer,
 });
 
 const store = createStore(reducers, applyMiddleware(thunk, logger));
