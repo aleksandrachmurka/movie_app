@@ -7,7 +7,7 @@ import { addToFavorites, removeFromFavorites } from '../../actions/favorites.js'
 import styles from './Movie.module.scss';
 import RunningTime from '../RunningTime';
 
-const Movie = ({id, title, image, releaseDate, duration, description, availableSeats, favorite, addMovie, removeMovie}) => {
+const Movie = ({id, title, image, releaseDate, duration, description, availableSeats, favorites, addMovie, removeMovie}) => {
 	return (
 		<div className={styles.container}>
 			<div styles={styles.movieDetails}>
@@ -21,7 +21,7 @@ const Movie = ({id, title, image, releaseDate, duration, description, availableS
 					<p> {description} </p>
 				</div>
 			</div>
-			{ favorite === false ?
+			{ favorites.includes(title) === false ?
 				<button onClick={()=> addMovie(title)}>Dodaj do ulubionych</button>
 						:
 				<button onClick={()=> removeMovie(title)}>Usuń z ulubionych</button>
@@ -48,7 +48,7 @@ Movie.proptypes = {
 }
 
 const mapStateToProps = store => ({
-	favorite: store.favorites.favorite,
+	favorites: store.favorites.favorites,
 });
 
 export default connect(mapStateToProps, { addMovie: addToFavorites, removeMovie: removeFromFavorites })(Movie);

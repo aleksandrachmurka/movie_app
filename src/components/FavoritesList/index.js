@@ -11,6 +11,7 @@ class FavoritesList extends Component {
 
   render() {
     const {favorites} = this.props;
+    console.log(favorites)
 
     if (isEmpty(favorites)) {
       return <Loader />;

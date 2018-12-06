@@ -13,6 +13,9 @@ const Navigation = () => (
 		<li>
 			<NavLink to="/redirect" className={styles.navElement} activeClassName={styles.active}>Coming Soon</NavLink>
 		</li>
+		<li>
+			<NavLink to="/favorites" className={styles.navElement} activeClassName={styles.active}>Favorites</NavLink>
+		</li>
 	</ul>
 
 );
