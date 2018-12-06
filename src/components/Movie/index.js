@@ -22,10 +22,13 @@ const Movie = ({id, title, image, releaseDate, duration, description, availableS
 				</div>
 			</div>
 			{ favorites.includes(id) === false ?
-				<button onClick={()=> addMovie(id)}>Dodaj do ulubionych</button>
+					<NavLink to={`/favorites`}>
+						<button className={styles.button} onClick={()=> addMovie(id)}>Dodaj do ulubionych</button>
+					</NavLink>
 						:
-				<button onClick={()=> removeMovie(id)}>Usuń z ulubionych</button>
+				<button className={styles.button} onClick={()=> removeMovie(id)}>Usuń z ulubionych</button>
 			}
+
 			<NavLink to={`/movies/${id}`}>
             	<button className={styles.button}>Oglądam!</button>
         	</NavLink>
