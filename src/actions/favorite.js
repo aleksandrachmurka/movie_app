@@ -1,13 +1,13 @@
-export const voteFavoriteUp = (title) => {
+export const voteFavoriteUp = (id) => {
 	return {
 		type: 'VOTE_FAVORITE_UP',
-		title: title,
+		id: id,
 	}
 }
 
-export const voteFavoriteDown = (title) => {
+export const voteFavoriteDown = (id) => {
 	return {
 		type: 'VOTE_FAVORITE_DOWN',
-		title: title,
+		id: id,
 	}
 }

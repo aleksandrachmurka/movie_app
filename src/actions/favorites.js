@@ -1,13 +1,13 @@
-export const addToFavorites = (title) => {
+export const addToFavorites = (id) => {
 	return {
 		type: 'ADD_TO_FAVORITES',
-		title: title,
+		id: id,
 	}
 }
 
-export const removeFromFavorites = (title) => {
+export const removeFromFavorites = (id) => {
 	return {
 		type: 'REMOVE_FROM_FAVORITES',
-		title: title,
+		id: id,
 	}
 }

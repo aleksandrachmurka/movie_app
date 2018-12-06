@@ -10,8 +10,8 @@ class FavoritesList extends Component {
   }
 
   render() {
-    const {favorites} = this.props;
-    console.log(favorites)
+    const {favorites, movies} = this.props;
+    let favs = movies.filter( movie => favorites.includes(movie['_id']));
 
     if (isEmpty(favorites)) {
       return <Loader />;
@@ -22,12 +22,12 @@ class FavoritesList extends Component {
     }
 
     return(
-        favorites.map(favorite =>
+        favs.map(fav =>
             (
               <Favorite
-                key={favorite['_id']}
-                id={favorite['_id']}
-                {...favorite}
+                key={fav['_id']}
+                id={fav['_id']}
+                {...fav}
               />
         ))
     )
@@ -36,6 +36,7 @@ class FavoritesList extends Component {
 
 const mapStateToProps = store => ({
   loading: store.favorites.loading,
+  movies: store.movies.movies,
   favorites: store.favorites.favorites,
   error: store.favorites.error,
 });
