@@ -10,15 +10,19 @@ class FavoritesList extends Component {
   }
 
   render() {
-    const {favorites, movies} = this.props;
+    const {favorites, movies, loading, error} = this.props;
     let favs = movies.filter( movie => favorites.includes(movie['_id']));
 
-    if (isEmpty(favorites)) {
+    if (loading) {
       return <Loader />;
     }
 
-    if (this.props.error === true) {
+    if (error) {
       return <p>Sorry, we could not load your favorite movies</p>
+    }
+
+    if (isEmpty(favorites)) {
+      return <p>No favorite movies to show</p>
     }
 
     return(

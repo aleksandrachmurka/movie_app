@@ -16,15 +16,18 @@ class BookingsList extends Component  {
   }
 
   render() {
-    const {bookedMovies} = this.props;
-    const {deleting} = this.props;
+    const {bookedMovies, loading, deleting, error} = this.props;
 
-    if (isEmpty(bookedMovies)) {
+    if (loading) {
       return <Loader />;
     }
 
-    if (this.props.error === true) {
+    if (error) {
       return <p>Sorry, we could not load your bookings</p>
+    }
+
+    if (isEmpty(bookedMovies)) {
+      return <p>No bookings to show</p>
     }
 
     return (

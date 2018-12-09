@@ -15,14 +15,18 @@ class MoviesList extends Component {
   }
 
   render() {
-    const {movies} = this.props;
+    const {movies, error, loading} = this.props;
 
-    if (isEmpty(movies)) {
+    if (loading) {
       return <Loader />;
     }
 
-    if (this.props.error === true) {
+    if (this.props.error) {
       return <p>Sorry, we could not load movies</p>
+    }
+
+    if (isEmpty(movies)) {
+      return <p>No movies to load</p>;
     }
 
     return(
