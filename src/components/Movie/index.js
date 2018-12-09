@@ -21,14 +21,13 @@ const Movie = ({id, title, image, releaseDate, duration, description, availableS
 					<p> {description} </p>
 				</div>
 			</div>
-			{ favorites.includes(id) === false ?
-					<NavLink to={`/favorites`}>
-						<button className={styles.button} onClick={()=> addMovie(id)}>Dodaj do ulubionych</button>
-					</NavLink>
-						:
-				<button className={styles.button} onClick={()=> removeMovie(id)}>Usuń z ulubionych</button>
-			}
-
+			<NavLink to={`/favorites`}>
+				{ favorites.includes(id) === false ?
+							<button className={styles.button} onClick={()=> addMovie(id)}>Dodaj do ulubionych</button>
+							:
+					<button className={styles.button} onClick={()=> removeMovie(id)}>Usuń z ulubionych</button>
+				}
+			</NavLink>
 			<NavLink to={`/movies/${id}`}>
             	<button className={styles.button}>Oglądam!</button>
         	</NavLink>
