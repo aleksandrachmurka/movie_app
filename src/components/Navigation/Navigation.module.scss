@@ -5,19 +5,43 @@
 	li {
 		display: inline;
 		padding: 0.5rem;
+		color: #000;
 	}
+}
+
+// .navElement {
+// 	text-decoration: none;
+// 	color: #000;
+// 	font-size: 1.5rem;
+
+// 	&:hover {
+// 		text-decoration: underline;
+// 	}
+// }
+
+.active {
+	font-size: 2rem;
+	text-decoration: underline;
 }
 
 .navElement {
 	text-decoration: none;
+	position: relative;
 	color: #000;
 	font-size: 1.5rem;
 
-	&:hover {
-		text-decoration: underline;
+	&:after {
+		content: '';
+		height: 2px;
+		position: absolute;
+		bottom: -5px;
+		left: 0;
+		width: 0%;
+		background: #000;
+		transition: 0.2s;
 	}
-}
 
-.active {
-	text-decoration: underline;
+	&:hover:after {
+		width: 100%;
+	}
 }

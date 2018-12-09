@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import formatDate from '../../utils/formatDate';
 import { connect } from 'react-redux';
@@ -20,8 +19,9 @@ const Favorite = ({id, title, image, releaseDate, duration, description, availab
 					<RunningTime  duration={duration}/>
 					<p> {description} </p>
 				</div>
-				<button onClick={voteUp}>{votes}</button>
-				<button onClick={voteDown}>{votes}</button>
+				<button onClick={voteUp}>UP</button>
+				<button onClick={voteDown}>DOWN</button>
+				{votes}
 			</div>
 		</div>
 	)
@@ -42,7 +42,7 @@ Favorite.proptypes = {
 }
 
 const mapStateToProps = store => ({
-	votes: store.favorites.votes,
+	votes: store.favorite.votes,
 });
 
 export default connect(mapStateToProps, { voteUp: voteFavoriteUp, voteDown: voteFavoriteDown })(Favorite);
