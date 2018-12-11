@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import formatDate from '../../utils/formatDate';
 import { connect } from 'react-redux';
-import { addToFavorites, removeFromFavorites } from '../../actions/favorites.js';
+import { addToFavorites } from '../../actions/addToFavorites.js';
+import { removeFromFavorites } from '../../actions/removeFromFavorites.js';
 import styles from './Movie.module.scss';
 import RunningTime from '../RunningTime';
 
