@@ -2,7 +2,7 @@ const initialState = {
 	ratings: [],
 }
 
-const ratingReducer = (state = initialState, action) => {
+const ratingsReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case 'RATE_FAVORITE':
 			return { ratings: [...state.ratings, {id: action.id, rate: action.rate}]};
@@ -11,4 +11,4 @@ const ratingReducer = (state = initialState, action) => {
 	}
 }
 
-export default ratingReducer;
+export default ratingsReducer;
