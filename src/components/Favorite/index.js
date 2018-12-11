@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import formatDate from '../../utils/formatDate';
-import { connect } from 'react-redux';
-import { voteFavoriteUp, voteFavoriteDown } from '../../actions/favorite.js';
 import styles from './Favorite.module.scss';
 import RunningTime from '../RunningTime';
+import Rating from '../spare_components/Rating';
 
-const Favorite = ({id, title, image, releaseDate, duration, description, availableSeats, votes, voteUp, voteDown}) => {
+const Favorite = ({id, title, image, releaseDate, duration, description}) => {
 	return (
 		<div className={styles.container}>
+			< Rating />
 			<div styles={styles.movieDetails}>
 				<div className={styles.backgroundImage} style={{backgroundImage: `url(${image})`}} />
 				<div className={styles.text}>
@@ -19,9 +19,6 @@ const Favorite = ({id, title, image, releaseDate, duration, description, availab
 					<RunningTime  duration={duration}/>
 					<p> {description} </p>
 				</div>
-				<button onClick={voteUp}>UP</button>
-				<button onClick={voteDown}>DOWN</button>
-				{votes}
 			</div>
 		</div>
 	)
@@ -41,8 +38,4 @@ Favorite.proptypes = {
 	description: PropTypes.string,
 }
 
-const mapStateToProps = store => ({
-	votes: store.favorite.votes,
-});
-
-export default connect(mapStateToProps, { voteUp: voteFavoriteUp, voteDown: voteFavoriteDown })(Favorite);
+export default Favorite;

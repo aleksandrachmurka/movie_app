@@ -58,7 +58,7 @@ class Rating extends Component {
 							/>
 					))
 				}
-				<span data-test="description"> {this.state.value===0 ?  'Brak oceny' : this.state.temporaryValue ? ratingDesc[this.state.temporaryValue]: ratingDesc[this.state.value]}</span>
+				<span data-test="description"> {this.state.value===0 ?  'Oceń' : this.state.temporaryValue ? ratingDesc[this.state.temporaryValue]: ratingDesc[this.state.value]}</span>
 			</div>
 		)
 	};
