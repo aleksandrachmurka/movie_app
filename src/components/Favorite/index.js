@@ -8,7 +8,7 @@ import Rating from '../spare_components/Rating';
 const Favorite = ({id, title, image, releaseDate, duration, description}) => {
 	return (
 		<div className={styles.container}>
-			< Rating />
+			< Rating id={id} />
 			<div styles={styles.movieDetails}>
 				<div className={styles.backgroundImage} style={{backgroundImage: `url(${image})`}} />
 				<div className={styles.text}>

@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { rateFavorite } from '../../../actions/rateFavorite.js';
 import styles from './Rating.module.scss';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -28,6 +30,8 @@ class Rating extends Component {
 			return;
 		}
 		this.setState({value: rate});
+
+		this.props.rate(this.props.id, rate);
 	}
 
 	handleMouseEnter = (rate) => {
@@ -40,6 +44,7 @@ class Rating extends Component {
 
 
 	render(){
+
 		return(
 			<div className={styles.container}>
 				{
@@ -64,8 +69,6 @@ class Rating extends Component {
 	};
 }
 
-export default Rating;
-
 Rating.defaultProps = {
 	rating: 0,
 };
@@ -73,3 +76,9 @@ Rating.defaultProps = {
 Rating.proptypes = {
 	rating: PropTypes.number,
 };
+
+const mapStateToProps = store => ({
+	ratings: store.ratings.ratings,
+});
+
+export default connect(mapStateToProps, { rate: rateFavorite})(Rating);
