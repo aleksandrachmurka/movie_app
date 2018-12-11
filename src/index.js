@@ -7,18 +7,18 @@ import { logger } from 'redux-logger';
 import thunk from 'redux-thunk';
 import moviesListReducer from './reducers/moviesListReducer.js';
 import movieReducer from './reducers/movieReducer.js';
-import bookingsReducer from './reducers/bookingsReducer.js';
+import bookingsListReducer from './reducers/bookingsListReducer.js';
 import bookingReducer from './reducers/bookingReducer.js';
-import favortiesReducer from './reducers/favoritesReducer.js';
+import favortiesListReducer from './reducers/favoritesListReducer.js';
 import App from './App';
 import './index.scss';
 
 const reducers = combineReducers({
 	movies: moviesListReducer,
 	movie: movieReducer,
-	bookings: bookingsReducer,
+	bookings: bookingsListReducer,
 	booking: bookingReducer,
-	favorites: favortiesReducer,
+	favorites: favortiesListReducer,
 });
 
 const store = createStore(reducers, applyMiddleware(thunk, logger));
