@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import formatDate from '../../utils/formatDate';
 import styles from './Favorite.module.scss';
 import RunningTime from '../RunningTime';
-import Rating from '../spare_components/Rating';
+import Rating from '../Rating';
 
 const Favorite = ({id, title, image, releaseDate, duration, description}) => {
 	return (

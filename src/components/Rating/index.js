@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { rateFavorite } from '../../../actions/rateFavorite.js';
+import { rateFavorite } from '../../actions/rateFavorite.js';
 import styles from './Rating.module.scss';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
