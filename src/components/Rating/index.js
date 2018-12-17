@@ -18,18 +18,13 @@ class Rating extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: props.rating,
+			rate: props.ratings.filter(id => id === props.id).rate,
 			temporaryValue: null,
 		}
 	}
 
 	handleClick = (rate) => {
-		//when the same star was clicked second time
-		if(rate === this.state.value) {
-			this.setState({value: 0});
-			return;
-		}
-		this.setState({value: rate});
+		this.setState({rate: rate});
 
 		this.props.rate(this.props.id, rate);
 	}
@@ -54,7 +49,7 @@ class Rating extends Component {
 								this.state.temporaryValue !== null ?
 								(starKey <= this.state.temporaryValue ? styles.starFill : styles.star)
 								:
-								(starKey <= this.state.value ? styles.starFill : styles.star)
+								(starKey <= this.state.rate ? styles.starFill : styles.star)
 
 							}
 							onClick={()=>this.handleClick(starKey)}
@@ -63,7 +58,7 @@ class Rating extends Component {
 							/>
 					))
 				}
-				<span data-test="description"> {this.state.value===0 ?  'Oceń' : this.state.temporaryValue ? ratingDesc[this.state.temporaryValue]: ratingDesc[this.state.value]}</span>
+				<span data-test="description"> {!this.state.rate ?  'Oceń' : this.state.temporaryValue ? ratingDesc[this.state.temporaryValue]: ratingDesc[this.state.rate]}</span>
 			</div>
 		)
 	};
