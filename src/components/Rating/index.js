@@ -18,14 +18,11 @@ class Rating extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			rate: props.ratings.filter(id => id === props.id).rate,
 			temporaryValue: null,
 		}
 	}
 
 	handleClick = (rate) => {
-		this.setState({rate: rate});
-
 		this.props.rate(this.props.id, rate);
 	}
 
@@ -37,8 +34,16 @@ class Rating extends Component {
 		this.setState({temporaryValue: null});
 	}
 
-
 	render(){
+
+		const rating = this.props.ratings.filter(x => x.id == this.props.id);
+		let rate = null;
+		let votes = null;
+
+		if(rating.length !== 0) {
+			rate = Math.round(rating[0].rate);
+			votes = rating[0].votes;
+		}
 
 		return(
 			<div className={styles.container}>
@@ -49,7 +54,7 @@ class Rating extends Component {
 								this.state.temporaryValue !== null ?
 								(starKey <= this.state.temporaryValue ? styles.starFill : styles.star)
 								:
-								(starKey <= this.state.rate ? styles.starFill : styles.star)
+								(starKey <= rate ? styles.starFill : styles.star)
 
 							}
 							onClick={()=>this.handleClick(starKey)}
@@ -58,7 +63,8 @@ class Rating extends Component {
 							/>
 					))
 				}
-				<span data-test="description"> {!this.state.rate ?  'Oceń' : this.state.temporaryValue ? ratingDesc[this.state.temporaryValue]: ratingDesc[this.state.rate]}</span>
+				<span data-test="description"> { (rating.length === 0 && this.state.temporaryValue === null) ?  'Oceń' : this.state.temporaryValue ? ratingDesc[this.state.temporaryValue]: ratingDesc[rate]}</span>
+				<p> {votes===null ? 'Brak głosów' : `Liczba ocen: ${votes}`}</p>
 			</div>
 		)
 	};
