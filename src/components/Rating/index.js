@@ -9,7 +9,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 const ratingDesc = {
 	'1': 'Dno',
 	'2': 'Ujdzie',
-	'3': 'Zjadliwy',
+	'3': 'Może być',
 	'4': 'Dobry',
 	'5': 'Arcydzieło!',
 };
@@ -55,7 +55,6 @@ class Rating extends Component {
 								(starKey <= this.state.temporaryValue ? styles.starFill : styles.star)
 								:
 								(starKey <= rate ? styles.starFill : styles.star)
-
 							}
 							onClick={()=>this.handleClick(starKey)}
 							onMouseEnter={()=> this.handleMouseEnter(starKey)}
